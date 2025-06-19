@@ -2,223 +2,713 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modern Utility Kilts: Blending Scottish Heritage with Everyday Functionality</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.8;
+    :root {
+      --primary: #5e3023;
+      --secondary: #895737;
+      --accent: #d8b07a;
+      --light: #f4f0e1;
+      --dark: #1a120b;
+      --highlight: #ffd700;
+    }
+    
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
-      color: #333;
     }
-
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.8;
+      background-color: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: linear-gradient(90deg, 
+        var(--primary) 0%, 
+        var(--secondary) 20%, 
+        var(--accent) 40%, 
+        var(--secondary) 60%, 
+        var(--primary) 80%);
+      background-size: 200% 100%;
+      animation: borderFlow 8s linear infinite;
+      z-index: 1000;
+    }
+    
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: linear-gradient(90deg, 
+        var(--primary) 0%, 
+        var(--secondary) 20%, 
+        var(--accent) 40%, 
+        var(--secondary) 60%, 
+        var(--primary) 80%);
+      background-size: 200% 100%;
+      animation: borderFlow 8s linear infinite reverse;
+      z-index: 1000;
+    }
+    
+    @keyframes borderFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    
     .container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 40px auto;
-      padding: 20px 30px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      padding: 40px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+      border-radius: 5px;
     }
-
+    
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, 
+        var(--primary), 
+        var(--secondary), 
+        var(--accent), 
+        var(--secondary), 
+        var(--primary));
+      background-size: 400% 100%;
+      animation: borderFlow 8s linear infinite;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
     h1 {
-      font-size: 32px;
-      color: #2a2a2a;
-      margin-bottom: 20px;
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
     }
-
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    
     h2 {
-      font-size: 24px;
-      color: #444;
-      margin-top: 30px;
+      font-size: 2rem;
+      margin-top: 50px;
+      padding-left: 15px;
+      border-left: 5px solid var(--accent);
     }
-
+    
     h3 {
-      font-size: 20px;
-      color: #555;
-      margin-top: 20px;
+      font-size: 1.5rem;
+      margin-top: 30px;
+      color: var(--secondary);
     }
-
+    
     p {
-      font-size: 16px;
-      margin-bottom: 20px;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: #444;
     }
-
+    
     a {
-      color: #0077cc;
+      color: var(--secondary);
       text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      position: relative;
     }
-
+    
     a:hover {
-      text-decoration: underline;
+      color: var(--primary);
     }
-
+    
+    a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    
+    a:hover::after {
+      width: 100%;
+    }
+    
     ul {
-      margin-left: 20px;
+      margin-left: 30px;
+      margin-bottom: 25px;
     }
-
+    
+    li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px 0;
+      margin: 30px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
     }
-
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-
+    
     th, td {
-      padding: 10px;
+      padding: 15px;
       text-align: left;
+      border-bottom: 1px solid #ddd;
     }
-
+    
     th {
-      background-color: #f0f0f0;
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
     }
-
+    
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    
     .highlight {
-      background-color: #f4f8ff;
-      padding: 10px;
-      border-left: 4px solid #0077cc;
+      background-color: rgba(216, 176, 122, 0.2);
+      padding: 20px;
+      border-left: 4px solid var(--accent);
+      margin: 30px 0;
+      border-radius: 0 5px 5px 0;
+    }
+    
+    .kilt-image {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                  url('https://images.unsplash.com/photo-1598880940080-ff9a29891b85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      margin: 40px 0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .kilt-image::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, 
+                    rgba(94, 48, 35, 0.3) 0%, 
+                    rgba(137, 87, 55, 0.2) 50%, 
+                    rgba(216, 176, 122, 0.1) 100%);
+      z-index: 1;
+    }
+    
+    .kilt-image h2 {
+      color: white;
+      font-size: 3rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      z-index: 2;
+      border-left: none;
+      padding-left: 0;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .feature-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .feature-content {
+      padding: 20px;
+    }
+    
+    .feature-content h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    
+    .tartan-pattern {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    
+    .tartan-1 {
+      top: 100px;
+      right: -50px;
+      background: 
+        repeating-linear-gradient(90deg, 
+          var(--primary), 
+          var(--primary) 10px, 
+          transparent 10px, 
+          transparent 20px),
+        repeating-linear-gradient(0deg, 
+          var(--primary), 
+          var(--primary) 10px, 
+          transparent 10px, 
+          transparent 20px),
+        repeating-linear-gradient(90deg, 
+          var(--accent), 
+          var(--accent) 20px, 
+          transparent 20px, 
+          transparent 40px),
+        repeating-linear-gradient(0deg, 
+          var(--accent), 
+          var(--accent) 20px, 
+          transparent 20px, 
+          transparent 40px);
+      transform: rotate(45deg);
+    }
+    
+    .tartan-2 {
+      bottom: 50px;
+      left: -50px;
+      background: 
+        repeating-linear-gradient(90deg, 
+          var(--secondary), 
+          var(--secondary) 15px, 
+          transparent 15px, 
+          transparent 30px),
+        repeating-linear-gradient(0deg, 
+          var(--secondary), 
+          var(--secondary) 15px, 
+          transparent 15px, 
+          transparent 30px),
+        repeating-linear-gradient(90deg, 
+          var(--light), 
+          var(--light) 30px, 
+          transparent 30px, 
+          transparent 60px),
+        repeating-linear-gradient(0deg, 
+          var(--light), 
+          var(--light) 30px, 
+          transparent 30px, 
+          transparent 60px);
+      transform: rotate(-15deg);
+    }
+    
+    .quote {
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--primary);
+      text-align: center;
+      margin: 50px auto;
+      max-width: 800px;
+      position: relative;
+      padding: 0 40px;
+    }
+    
+    .quote::before, .quote::after {
+      content: '"';
+      font-size: 3rem;
+      color: var(--accent);
+      position: absolute;
+      opacity: 0.5;
+    }
+    
+    .quote::before {
+      top: -20px;
+      left: 0;
+    }
+    
+    .quote::after {
+      bottom: -40px;
+      right: 0;
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 50px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="5,5" /></svg>');
+      opacity: 0.1;
+    }
+    
+    .cta-section h2 {
+      color: white;
+      border-left: none;
+      padding-left: 0;
+      margin-bottom: 30px;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--dark);
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      color: var(--dark);
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.6rem;
+      }
+      
+      .kilt-image h2 {
+        font-size: 2rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Animation classes */
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
+  <div class="tartan-pattern tartan-1"></div>
+  <div class="tartan-pattern tartan-2"></div>
+  
+  <div class="container">
+    <h1 class="fade-in">Modern Utility Kilts:<br>Where Scottish Heritage Meets Contemporary Function</h1>
+    
+    <div class="kilt-image pulse">
+      <h2>Freedom in Every Pleat</h2>
+    </div>
+    
+    <h2 class="fade-in">Introduction: The Revival of a Cultural Icon</h2>
+    <p>The kilt, a garment steeped in Scottish tradition, has long symbolized identity, pride, and honor. While its roots are embedded in Highland history, the modern reinterpretation of this timeless piece—<strong>the utility kilt</strong>—has transformed it into a globally appreciated symbol of both cultural reverence and everyday practicality. Today's kilts, such as those available at <a href="https://utilitykilt.co.uk/" target="_blank">Utility Kilt UK</a>, are designed to blend historical inspiration with contemporary function, offering wearers unmatched comfort, durability, and style.</p>
+    
+    <div class="quote fade-in">
+      "The utility kilt isn't just clothing—it's a declaration of independence from conventional fashion."
+    </div>
+    
+    <h2 class="fade-in">1. The Traditional Kilt: A Brief Historical Glance</h2>
+    <p>The kilt's origin dates back to the 16th century in the Scottish Highlands, where it was known as the "great kilt" or <em>feileadh mòr</em>. This large piece of cloth wrapped around the body and was worn as both clothing and bedding. Over centuries, it morphed into the tailored, pleated garment we recognize today, becoming associated with Scottish clans, military regiments, and cultural ceremonies. Kilts became more than attire—they were badges of identity and heritage.</p>
+    
+    <h2 class="fade-in">2. The Rise of the Utility Kilt: Form Meets Function</h2>
+    <p>In recent decades, a modern innovation emerged: the <strong>utility kilt</strong>. Designed with the structure and flair of the traditional garment but updated for functionality, utility kilts are tailored for everyday wear. Made from durable fabrics like cotton or poly-cotton blends, they are equipped with features such as:</p>
+    <ul class="fade-in">
+      <li>Cargo pockets for practical storage</li>
+      <li>Reinforced belt loops for durability</li>
+      <li>Adjustable fasteners for perfect fit</li>
+      <li>Weather-resistant materials for all conditions</li>
+      <li>Modern pleating techniques for comfort</li>
+    </ul>
+    
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Utility Kilt Style">
+        <div class="feature-content">
+          <h3>Urban Style</h3>
+          <p>Modern designs that blend seamlessly with contemporary streetwear while maintaining traditional elements.</p>
+        </div>
+      </div>
+      
+      <div class="feature-card fade-in">
+        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Utility Kilt Functionality">
+        <div class="feature-content">
+          <h3>Practical Design</h3>
+          <p>Thoughtful features like tool loops and secure pockets make these kilts ideal for work and adventure.</p>
+        </div>
+      </div>
+      
+      <div class="feature-card fade-in">
+        <img src="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Utility Kilt Comfort">
+        <div class="feature-content">
+          <h3>Unmatched Comfort</h3>
+          <p>Freedom of movement and breathability that trousers can't match, perfect for all-day wear.</p>
+        </div>
+      </div>
+    </div>
+    
+    <h2 class="fade-in">3. Style Meets Substance: Why Modern Wearers Choose Utility Kilts</h2>
+    <h3 class="fade-in">a. Comfort and Breathability</h3>
+    <p>Unlike trousers, utility kilts allow unrestricted leg movement and improved air circulation, making them perfect for hot weather or physically demanding tasks. The natural drape of the kilt creates airflow that keeps you cool in summer and can be layered for warmth in winter.</p>
+    
+    <h3 class="fade-in">b. Unique Expression</h3>
+    <p>Wearing a utility kilt makes a statement. It communicates individuality, confidence, and often a nod to one's heritage. With customizable options from tartan patterns to modern solid colors, your kilt can reflect your personal style.</p>
+    
+    <h3 class="fade-in">c. Functional Storage</h3>
+    <p>Many kilts feature deep side cargo pockets and even tool loops, blending fashion with utility. For tradesmen, bikers, or campers, this functionality is a game changer. Some designs include hidden compartments, RFID-blocking pockets, or even integrated bottle openers.</p>
+    
+    <div class="highlight fade-in">
+      <h3>Did You Know?</h3>
+      <p>The modern utility kilt movement gained significant momentum in the early 2000s, particularly among motorcycle enthusiasts and tradespeople who valued the garment's combination of style and practicality. Today, they're worn by everyone from construction workers to fashion influencers.</p>
+    </div>
+    
+    <h2 class="fade-in">4. Fabric and Design Innovation: Built for the Modern World</h2>
+    <p>Modern utility kilts come in a variety of materials and designs. Some popular fabric choices include:</p>
+    <ul class="fade-in">
+      <li><strong>Canvas:</strong> Tough and rugged for workwear, often treated for water resistance</li>
+      <li><strong>Denim:</strong> Urban and stylish with a contemporary edge</li>
+      <li><strong>Poly-cotton blends:</strong> Lightweight and comfortable for everyday wear</li>
+      <li><strong>Leather or faux leather:</strong> Edgy, bold fashion statements</li>
+      <li><strong>Technical fabrics:</strong> Moisture-wicking, quick-dry materials for active lifestyles</li>
+    </ul>
+    <p>Design innovations also include reflective stripes for safety, waterproof linings, and detachable pouches. Brands often offer customization to allow wearers to design kilts suited to their specific needs, from added pockets to personalized embroidery.</p>
+    
+    <h2 class="fade-in">5. Who's Wearing Utility Kilts? A Growing Global Audience</h2>
+    <p>Utility kilts are now worn by people from all walks of life and across the globe:</p>
+    <ul class="fade-in">
+      <li><strong>Construction workers</strong> and tradespeople love them for comfort and storage.</li>
+      <li><strong>Festival attendees</strong> embrace their free-flowing style and unique look.</li>
+      <li><strong>Motorcyclists</strong> value the unrestricted movement and rugged aesthetic.</li>
+      <li><strong>LGBTQ+ communities</strong> celebrate kilts as bold expressions of identity and gender fluidity.</li>
+      <li><strong>Fitness enthusiasts</strong> use them for hiking, sports, and outdoor activities.</li>
+      <li><strong>Tech professionals</strong> in creative fields adopt them as statement pieces.</li>
+    </ul>
+    
+    <h2 class="fade-in">6. Utility Kilts vs. Traditional Kilts: A Comparative View</h2>
+    <table class="fade-in">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Traditional Kilt</th>
+          <th>Utility Kilt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fabric</td>
+          <td>Wool</td>
+          <td>Cotton, canvas, denim, technical fabrics</td>
+        </tr>
+        <tr>
+          <td>Purpose</td>
+          <td>Ceremonial, formal</td>
+          <td>Everyday, functional, versatile</td>
+        </tr>
+        <tr>
+          <td>Pockets</td>
+          <td>Rare or none</td>
+          <td>Multiple cargo pockets, tool loops</td>
+        </tr>
+        <tr>
+          <td>Pleats</td>
+          <td>Deep, back pleats</td>
+          <td>Variable pleating styles, some with flat fronts</td>
+        </tr>
+        <tr>
+          <td>Target audience</td>
+          <td>Scots or heritage wearers</td>
+          <td>Global, practical wearers of all backgrounds</td>
+        </tr>
+        <tr>
+          <td>Price Range</td>
+          <td>Higher (due to craftsmanship)</td>
+          <td>More affordable options available, plus premium versions</td>
+        </tr>
+        <tr>
+          <td>Maintenance</td>
+          <td>Dry clean only</td>
+          <td>Most machine washable</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h2 class="fade-in">7. Occasions to Rock a Utility Kilt</h2>
+    <p>You don't have to be in the Highlands to wear one. Here are everyday events perfect for a utility kilt:</p>
+    <ul class="fade-in">
+      <li><strong>Music Festivals</strong> – Stand out in a crowd with comfort and flair.</li>
+      <li><strong>Work Sites</strong> – Replace your pants with a rugged kilt that offers better movement.</li>
+      <li><strong>Outdoor Adventures</strong> – Perfect for hiking, biking, or camping.</li>
+      <li><strong>Weddings and Events</strong> – Dress them up with boots and a jacket.</li>
+      <li><strong>Pride Parades</strong> – Express yourself with bold colors and confident styling.</li>
+      <li><strong>Casual Outings</strong> – Pair with a t-shirt for everyday errands in style.</li>
+      <li><strong>Creative Workplaces</strong> – Make a statement in tech or design offices.</li>
+    </ul>
+    
+    <div class="cta-section fade-in">
+      <h2>Ready to Experience the Freedom of a Utility Kilt?</h2>
+      <p>Join thousands of satisfied wearers who've discovered the perfect blend of style, comfort, and functionality.</p>
+      <a href="https://utilitykilt.co.uk/" class="cta-button" target="_blank">Explore Our Collection</a>
+    </div>
+    
+    <h2 class="fade-in">8. Caring for Your Utility Kilt: Easy Maintenance Tips</h2>
+    <p>Most utility kilts are low maintenance. Here are some quick care tips:</p>
+    <ul class="fade-in">
+      <li><strong>Machine wash cold</strong> (unless leather or special material) with similar colors</li>
+      <li><strong>Avoid bleach and high heat</strong> drying to preserve fabrics and hardware</li>
+      <li><strong>Hang or fold properly</strong> to maintain pleats and shape</li>
+      <li><strong>Use a damp cloth</strong> to clean leather or hardware accents</li>
+      <li><strong>Store away from moisture</strong> to prevent mildew and odors</li>
+      <li><strong>Spot clean</strong> when possible to extend time between washes</li>
+      <li><strong>Follow manufacturer instructions</strong> for specialty materials</li>
+    </ul>
+    
+    <h2 class="fade-in">9. The Cultural Impact: Embracing Diversity and Reclaiming Identity</h2>
+    <p>Utility kilts serve a broader purpose than just utility. They represent:</p>
+    <ul class="fade-in">
+      <li><strong>Cultural appreciation:</strong> Honoring Scottish roots while embracing modern needs</li>
+      <li><strong>Gender fluidity:</strong> Breaking fashion norms in a unisex design</li>
+      <li><strong>Inclusivity:</strong> Worn by individuals of all races, orientations, and professions</li>
+      <li><strong>Sustainability:</strong> Many kilts are made with eco-friendly practices, offering a sustainable fashion alternative</li>
+      <li><strong>Self-expression:</strong> A canvas for personal identity in an increasingly uniform world</li>
+    </ul>
+    
+    <h2 class="fade-in">10. The Future of Utility Kilts: Where Fashion Meets Evolution</h2>
+    <p>With growing interest in personalized, functional, and inclusive fashion, the utility kilt is poised to evolve further. Expect to see:</p>
+    <ul class="fade-in">
+      <li><strong>Smart textiles</strong> for temperature control and connectivity</li>
+      <li><strong>Modular designs</strong> with detachable parts for versatility</li>
+      <li><strong>Sustainable materials</strong> like hemp, bamboo, and recycled fabrics</li>
+      <li><strong>Fashion collaborations</strong> with streetwear or luxury designers</li>
+      <li><strong>Tech integration</strong> with charging ports and wearable tech compatibility</li>
+      <li><strong>Custom 3D-printed</strong> hardware and accessories</li>
+      <li><strong>Augmented reality</strong> for virtual try-ons and pattern visualization</li>
+    </ul>
+    
+    <div class="quote fade-in">
+      "The utility kilt is more than clothing—it's a movement. It represents freedom from convention and a return to functional, meaningful fashion."
+    </div>
+    
+    <h2 class="fade-in">Conclusion: A Symbol of Freedom, Style, and Utility</h2>
+    <p>The utility kilt bridges the gap between historic pride and modern-day practicality. Whether you're honoring your ancestry or simply seeking a bold, breathable, and functional outfit, this reinvented kilt is a garment for the 21st century. It's not just what you wear—it's what it represents: courage, identity, and individuality.</p>
+    <p>As fashion continues to evolve toward personal expression and functionality, the utility kilt stands as a testament to how traditional garments can be reimagined for contemporary life. Whether you choose a rugged work-ready version or a sleek urban design, wearing a utility kilt makes a statement: that you value comfort, functionality, and style in equal measure.</p>
+  </div>
 
-<div class="container">
-  <h1>Modern Utility Kilts: Blending Scottish Heritage with Everyday Functionality</h1>
-
-  <h2>Introduction: The Revival of a Cultural Icon</h2>
-  <p>The kilt, a garment steeped in Scottish tradition, has long symbolized identity, pride, and honor. While its roots are embedded in Highland history, the modern reinterpretation of this timeless piece—<strong>the utility kilt</strong>—has transformed it into a globally appreciated symbol of both cultural reverence and everyday practicality. Today’s kilts, such as those available at <a href="https://utilitykilt.co.uk/" target="_blank">utility Kilt UK</a>, are designed to blend historical inspiration with contemporary function, offering wearers unmatched comfort, durability, and style.</p>
-
-  <h2>1. The Traditional Kilt: A Brief Historical Glance</h2>
-  <p>The kilt’s origin dates back to the 16th century in the Scottish Highlands, where it was known as the “great kilt” or <em>feileadh mòr</em>. This large piece of cloth wrapped around the body and was worn as both clothing and bedding. Over centuries, it morphed into the tailored, pleated garment we recognize today, becoming associated with Scottish clans, military regiments, and cultural ceremonies. Kilts became more than attire—they were badges of identity and heritage.</p>
-
-  <h2>2. The Rise of the Utility Kilt: Form Meets Function</h2>
-  <p>In recent decades, a modern innovation emerged: the <strong>utility kilt</strong>. Designed with the structure and flair of the traditional garment but updated for functionality, utility kilts are tailored for everyday wear. Made from durable fabrics like cotton or poly-cotton blends, they are equipped with features such as:</p>
-  <ul>
-    <li>Cargo pockets</li>
-    <li>Reinforced belt loops</li>
-    <li>Adjustable fasteners</li>
-    <li>Weather-resistant materials</li>
-  </ul>
-
-  <h2>3. Style Meets Substance: Why Modern Wearers Choose Utility Kilts</h2>
-  <h3>a. Comfort and Breathability</h3>
-  <p>Unlike trousers, utility kilts allow unrestricted leg movement and improved air circulation, making them perfect for hot weather or physically demanding tasks.</p>
-
-  <h3>b. Unique Expression</h3>
-  <p>Wearing a utility kilt makes a statement. It communicates individuality, confidence, and often a nod to one’s heritage.</p>
-
-  <h3>c. Functional Storage</h3>
-  <p>Many kilts feature deep side cargo pockets and even tool loops, blending fashion with utility. For tradesmen, bikers, or campers, this functionality is a game changer.</p>
-
-  <h2>4. Fabric and Design Innovation: Built for the Modern World</h2>
-  <p>Modern utility kilts come in a variety of materials and designs. Some popular fabric choices include:</p>
-  <ul>
-    <li><strong>Canvas:</strong> Tough and rugged for workwear</li>
-    <li><strong>Denim:</strong> Urban and stylish</li>
-    <li><strong>Poly-cotton blends:</strong> Lightweight and comfortable</li>
-    <li><strong>Leather or faux leather:</strong> Edgy, bold fashion statements</li>
-  </ul>
-  <p>Design innovations also include reflective stripes for safety, waterproof linings, and detachable pouches. Brands often offer customization to allow wearers to design kilts suited to their specific needs.</p>
-
-  <h2>5. Who’s Wearing Utility Kilts? A Growing Global Audience</h2>
-  <p>Utility kilts are now worn by people from all walks of life and across the globe:</p>
-  <ul>
-    <li><strong>Construction workers</strong> and tradespeople love them for comfort and storage.</li>
-    <li><strong>Festival attendees</strong> embrace their free-flowing style.</li>
-    <li><strong>Motorcyclists</strong> value the unrestricted movement.</li>
-    <li><strong>LGBTQ+ communities</strong> celebrate kilts as bold expressions of identity.</li>
-    <li><strong>Fitness enthusiasts</strong> use them for hiking and sports.</li>
-  </ul>
-
-  <h2>6. Utility Kilts vs. Traditional Kilts: A Comparative View</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Feature</th>
-        <th>Traditional Kilt</th>
-        <th>Utility Kilt</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Fabric</td>
-        <td>Wool</td>
-        <td>Cotton, canvas, denim</td>
-      </tr>
-      <tr>
-        <td>Purpose</td>
-        <td>Ceremonial, formal</td>
-        <td>Everyday, functional</td>
-      </tr>
-      <tr>
-        <td>Pockets</td>
-        <td>Rare or none</td>
-        <td>Multiple cargo pockets</td>
-      </tr>
-      <tr>
-        <td>Pleats</td>
-        <td>Deep, back pleats</td>
-        <td>Variable pleating styles</td>
-      </tr>
-      <tr>
-        <td>Target audience</td>
-        <td>Scots or heritage wearers</td>
-        <td>Global, practical wearers</td>
-      </tr>
-      <tr>
-        <td>Price Range</td>
-        <td>Higher (due to craftsmanship)</td>
-        <td>More affordable options available</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>7. Occasions to Rock a Utility Kilt</h2>
-  <p>You don’t have to be in the Highlands to wear one. Here are everyday events perfect for a utility kilt:</p>
-  <ul>
-    <li><strong>Music Festivals</strong> – Stand out in a crowd with comfort and flair.</li>
-    <li><strong>Work Sites</strong> – Replace your pants with a rugged kilt that offers better movement.</li>
-    <li><strong>Outdoor Adventures</strong> – Perfect for hiking, biking, or camping.</li>
-    <li><strong>Weddings and Events</strong> – Dress them up with boots and a jacket.</li>
-    <li><strong>Pride Parades</strong> – Express yourself with bold colors and confident styling.</li>
-  </ul>
-
-  <h2>8. Caring for Your Utility Kilt: Easy Maintenance Tips</h2>
-  <p>Most utility kilts are low maintenance. Here are some quick care tips:</p>
-  <ul>
-    <li><strong>Machine wash cold</strong> (unless leather or special material)</li>
-    <li><strong>Avoid bleach and high heat</strong> drying</li>
-    <li><strong>Hang or fold properly</strong> to maintain pleats</li>
-    <li><strong>Use a damp cloth</strong> to clean leather or hardware accents</li>
-    <li><strong>Store away from moisture</strong> to prevent mildew</li>
-  </ul>
-
-  <h2>9. The Cultural Impact: Embracing Diversity and Reclaiming Identity</h2>
-  <p>Utility kilts serve a broader purpose than just utility. They represent:</p>
-  <ul>
-    <li><strong>Cultural appreciation:</strong> Honoring Scottish roots while embracing modern needs</li>
-    <li><strong>Gender fluidity:</strong> Breaking fashion norms in a unisex design</li>
-    <li><strong>Inclusivity:</strong> Worn by individuals of all races, orientations, and professions</li>
-    <li><strong>Sustainability:</strong> Many kilts are made with eco-friendly practices, offering a sustainable fashion alternative</li>
-  </ul>
-
-  <h2>10. The Future of Utility Kilts: Where Fashion Meets Evolution</h2>
-  <p>With growing interest in personalized, functional, and inclusive fashion, the utility kilt is poised to evolve further. Expect to see:</p>
-  <ul>
-    <li><strong>Smart textiles</strong> for temperature control</li>
-    <li><strong>Modular designs</strong> with detachable parts</li>
-    <li><strong>Sustainable materials</strong> like hemp or bamboo</li>
-    <li><strong>Fashion collaborations</strong> with streetwear or luxury designers</li>
-  </ul>
-
-  <h2>Conclusion: A Symbol of Freedom, Style, and Utility</h2>
-  <p>The utility kilt bridges the gap between historic pride and modern-day practicality. Whether you're honoring your ancestry or simply seeking a bold, breathable, and functional outfit, this reinvented kilt is a garment for the 21st century. It’s not just what you wear—it’s what it represents: courage, identity, and individuality.</p>
-</div>
-
+  <script>
+    // Simple animation trigger
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      fadeElements.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+    });
+  </script>
 </body>
 </html>
